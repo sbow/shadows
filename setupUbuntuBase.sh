@@ -119,6 +119,8 @@ python3 -m pip install mxnet
 python3 -m pip install jupyter
 python3 -m pip install jupyter_http_over_ws
 python3 -m pip install googlemaps
+python3 -m pip install gmaps
+jupyter nbextension enable --py --sys-prefix gmaps
 
 # Setup home folder
 tput setaf 1
@@ -178,4 +180,7 @@ then
 	sudo apt upgrade
 	sudo apt install ros-rolling-desktop
 fi
+
+# install webserver / node
+sudo apt install nodejs
 
