@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!~/venv38/bin python3
 
 """A points on map script"""
 
