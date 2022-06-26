@@ -54,6 +54,7 @@ sudo apt install bat
 sudo apt install httpie
 sudo apt install tldr
 sudo apt install fzf
+sudo apt install net-tools
 tput setaf 1
 read -p "Do u need to setup 'fd' fast find?" -n 1 -r
 tput sgr0
