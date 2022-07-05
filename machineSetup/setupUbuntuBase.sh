@@ -120,6 +120,7 @@ python3 -m pip install jupyter
 python3 -m pip install jupyter_http_over_ws
 python3 -m pip install googlemaps
 python3 -m pip install gmaps
+python3 -m pip install mdfreader
 jupyter nbextension enable --py --sys-prefix gmaps
 
 # Setup home folder
