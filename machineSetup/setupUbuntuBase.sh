@@ -55,6 +55,8 @@ sudo apt install httpie
 sudo apt install tldr
 sudo apt install fzf
 sudo apt install net-tools
+sudo apt install smdb
+
 tput setaf 1
 read -p "Do u need to setup 'fd' fast find?" -n 1 -r
 tput sgr0
@@ -119,10 +121,18 @@ python3 -m pip install torch torchvision
 python3 -m pip install mxnet
 python3 -m pip install jupyter
 python3 -m pip install jupyter_http_over_ws
+python3 -m pip install jupyter_contrib_nbextensions
+python3 -m pip install jupyter_nbextensions_configurator
+python3 -m pip install jupyterlab
+python3 -m pip install SimpleHTTPServer
+python3 -m pip install pychromecast
 python3 -m pip install googlemaps
 python3 -m pip install gmaps
 python3 -m pip install mdfreader
 jupyter nbextension enable --py --sys-prefix gmaps
+jupyter contrib nbextension install --user
+python3 -m pip install pytest
+python3 -m pip install pycodestyle
 
 # Setup home folder
 tput setaf 1
