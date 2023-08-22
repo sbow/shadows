@@ -22,3 +22,5 @@
 ### Ref - basic pyenv usage:
 > pyenv install 3.8
 
+### libgdal-dev and pygdal specific instructions
+- https://rasmuse.github.io/setting-up-gdal-python-virtualenv.html
