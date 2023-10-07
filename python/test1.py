@@ -13,7 +13,7 @@ coordinate_pairs = ["%s,%s" % (q['latitude'], q['longitude']) for q in DictReade
 
 # this is another way of serializing the URL
 preq = requests.PreparedRequest()
-preq.prepare_url(GMAPS_URL, {'size':'800x500', 'markers': coordinate_pairs, 'key': 'AIzaSyAoJwbpcHvfDG6XlNYxh2JOmTl1lQBDwcU'})
+preq.prepare_url(GMAPS_URL, {'size':'800x500', 'markers': coordinate_pairs, 'key': 'AIzaSyAoJwbpcHvfDG7XlNYxh2JOmTl1lQBDwcU'})
 webbrowser.open(preq.url)
 
 spin = 1

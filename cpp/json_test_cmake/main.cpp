@@ -29,8 +29,11 @@ int main() {
 
     // Access the parameters
     std::string name;
+    int age;
+
     try {
         name = json_obj.at("name");
+        age = json_obj.at("age");
     } catch (nlohmann::json::out_of_range &e) {
         std::cerr << "Error: 'name' not found in JSON file." << std::endl;
         return 1;
@@ -38,6 +41,7 @@ int main() {
 
     // Print the parameter
     std::cout << "from params.json name: " << name << std::endl;
+    std::cout << "age: " << age << std::endl;
 
     std::cout << "Hello, World!" << std::endl;
     return 0;
