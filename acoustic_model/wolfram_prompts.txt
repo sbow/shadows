@@ -1,0 +1,105 @@
+[1.1]
+please generate a 2D rendering of the following:
+
+- a point source of sound at 110 db, at z height +10 meters
+- a planer area of 500 square meters
+- nominal atmospheric conditions
+- standard elevation
+- a top down projection, at a z height of + 2 meters, centered at a point in the x,y plane at 400 meters from the point source of sound
+- orientation of the projection:
+top down (camera at x,y,z:(0,0,400); along vector: [0,0,1]
+- position of recorder (0,0,2): along vector [
+- postion of source (-400,0,0), projects spherically in R3
+- infinate ground plane at (0,0,0), projects along [1,1,0]
+
+
+[3.1]
+
+Write in python, using the following libraries:
+pandas
+pandas user defined functions
+matplotlib
+image surface contour plot of dba
+
+-----
+
+(* Define sound source properties *)
+soundLevelDB = 110;
+soundIntensityReference = 1*10^-12; (* In watts per square meter *)
+
+(* Calculate sound source intensity *)
+sourceIntensity = soundIntensityReference * 10^(soundLevelDB / 10);
+
+(* Define positions *)
+sourcePosition = {-400, 0, 10}; (* Using 3D coordinates for conceptual purposes *)
+observerPosition = {0, 0, 2};
+
+(* Simulation area *)
+xRange = {-450, 450};
+yRange = {-250, 250};
+
+(* Sound intensity calculation *)
+intensityFunction[x_, y_] := sourceIntensity / (4 * Pi * ((x - sourcePosition[[1]])^2 + (y - sourcePosition[[2]])^2))
+
+(* Generate the top-down projection plot *)
+ContourPlot[intensityFunction[x, y], {x, xRange[[1]], xRange[[2]]}, {y, yRange[[1]], yRange[[2]]}, Contours -> 50, ColorFunction -> "Rainbow", PlotLegends -> Automatic]
+
+[2.1]
+(* Define sound source properties *)
+soundLevelDB = 110;
+soundIntensityReference = 1*10^-12; (* In watts per square meter *)
+
+(* Calculate sound source intensity *)
+sourceIntensity = soundIntensityReference * 10^(soundLevelDB / 10);
+
+(* Define positions *)
+sourcePosition = {-400, 0, 10}; (* Using 3D coordinates for conceptual purposes *)
+observerPosition = {0, 0, 2};
+
+(* Simulation area *)
+xRange = {-450, 450};
+yRange = {-250, 250};
+
+(* Sound intensity calculation *)
+intensityFunction[x_, y_] := sourceIntensity / (4 * Pi * ((x - sourcePosition[[1]])^2 + (y - sourcePosition[[2]])^2))
+
+(* Generate the top-down projection plot *)
+ContourPlot[intensityFunction[x, y], {x, xRange[[1]], xRange[[2]]}, {y, yRange[[1]], yRange[[2]]}, Contours -> 50, ColorFunction -> "Rainbow", PlotLegends -> Automatic]
+
+[resonse: 3.1]
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Define sound source properties
+soundLevelDB = 110
+soundIntensityReference = 1e-12  # Watts per square meter
+
+# Calculate sound source intensity
+sourceIntensity = soundIntensityReference * 10**(soundLevelDB / 10)
+
+# Define positions
+sourcePosition = np.array([-400, 0, 10])  # 3D coordinates
+
+# Simulation area
+xRange = np.linspace(-450, 450, 1000)  # 1000 points for smoothness
+yRange = np.linspace(-250, 250, 1000)
+X, Y = np.meshgrid(xRange, yRange)
+
+# Sound intensity calculation function
+def intensity_function(x, y, sourceIntensity=sourceIntensity, sourcePosition=sourcePosition):
+    distance_squared = (x - sourcePosition[0])**2 + (y - sourcePosition[1])**2
+    intensity = sourceIntensity / (4 * np.pi * distance_squared)
+    return intensity
+
+# Generate the sound intensity over the grid
+Z = intensity_function(X, Y)
+
+# Generate the contour plot
+plt.figure(figsize=(10, 6))
+contour = plt.contourf(X, Y, Z, levels=50, cmap='rainbow')
+plt.colorbar(contour)
+plt.title('Sound Intensity Distribution')
+plt.xlabel('X position (m)')
+plt.ylabel('Y position (m)')
+plt.show()
